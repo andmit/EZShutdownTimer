@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace EZShutdownTimer
@@ -31,14 +32,24 @@ namespace EZShutdownTimer
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string strCmdText;
-            strCmdText = "shutdown -s -t" + secsGet();
-            System.Diagnostics.Process.Start("CMD.exe", strCmdText);
+            Process cmd = new Process();
+            cmd.StartInfo.FileName = "cmd.exe";
+            cmd.StartInfo.RedirectStandardInput = true;
+            cmd.StartInfo.RedirectStandardOutput = true;
+            cmd.StartInfo.CreateNoWindow = true;
+            cmd.StartInfo.UseShellExecute = false;
+            cmd.Start();
+
+            cmd.StandardInput.WriteLine("shutdown -s -t" + secsGet());
+            cmd.StandardInput.Flush();
+            cmd.StandardInput.Close();
+            cmd.WaitForExit();
+            Console.WriteLine(cmd.StandardOutput.ReadToEnd());
         }
 
         private int secsGet()
         {
-            return (int)numericUpDown1.Value * 60 * 60;
+            return 1 + (int)numericUpDown1.Value * 60 * 60;
         }
     }
 }
