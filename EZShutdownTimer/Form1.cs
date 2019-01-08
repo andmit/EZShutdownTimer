@@ -16,5 +16,29 @@ namespace EZShutdownTimer
         {
             InitializeComponent();
         }
+
+        private void secs_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            int seconds = (int)(numericUpDown1.Value * 60) * 60;
+            secs.Text = seconds + "Secs";
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string strCmdText;
+            strCmdText = "shutdown -s -t" + secsGet();
+            System.Diagnostics.Process.Start("CMD.exe", strCmdText);
+        }
+
+        private int secsGet()
+        {
+            return (int)numericUpDown1.Value * 60 * 60;
+        }
     }
 }
