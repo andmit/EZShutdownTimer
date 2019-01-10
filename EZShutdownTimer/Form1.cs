@@ -40,20 +40,22 @@ namespace EZShutdownTimer
         {
             if (state)
             {
-                var pwr = new ProcessStartInfo("shutdown", "/s /t " + secsGet());
-
-                pwr.CreateNoWindow = true;
-                pwr.UseShellExecute = false;
-                Process.Start(pwr);
+                //var pwr = new ProcessStartInfo("shutdown", "/s /t " + secsGet());
+                //System.Diagnostics.Process.Start("ShutDown", "/t " + secsGet());
+                Process.Start(Environment.ExpandEnvironmentVariables("cmd.exe"), "shutdown /s /t "  + secsGet().ToString());
+                                                                                                         // pwr.CreateNoWindow = true;
+                                                                                                         //pwr.UseShellExecute = false;
+                                                                                                         // Process.Start(pwr);
                 button1.Visible = false;
                 button2.Visible = true;
             }
             else {
-                var pwr = new ProcessStartInfo("shutdown", "/a");
+                //var pwr = new ProcessStartInfo("shutdown", "/a");
+                System.Diagnostics.Process.Start("shutdown", "/a");
 
-                pwr.CreateNoWindow = true;
-                pwr.UseShellExecute = false;
-                Process.Start(pwr);
+//                pwr.CreateNoWindow = true;
+  //              pwr.UseShellExecute = false;
+    //            Process.Start(pwr);
                 button1.Visible = true;
                 button2.Visible = false;
                 
