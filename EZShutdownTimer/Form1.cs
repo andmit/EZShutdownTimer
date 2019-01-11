@@ -42,10 +42,12 @@ namespace EZShutdownTimer
             {
                 //var pwr = new ProcessStartInfo("shutdown", "/s /t " + secsGet());
                 //System.Diagnostics.Process.Start("ShutDown", "/t " + secsGet());
-                Process.Start(Environment.ExpandEnvironmentVariables("cmd.exe"), "shutdown /s /t "  + secsGet().ToString());
-                                                                                                         // pwr.CreateNoWindow = true;
-                                                                                                         //pwr.UseShellExecute = false;
-                                                                                                         // Process.Start(pwr);
+                //Process.Start(Environment.ExpandEnvironmentVariables("cmd.exe"), "shutdown /s /t "  + secsGet().ToString());
+                ProcessStartInfo startInfo = new ProcessStartInfo("shutdown.exe", "/s /t " + secsGet());
+                startInfo.Verb = "runas";
+                System.Diagnostics.Process.Start(startInfo);
+
+
                 button1.Visible = false;
                 button2.Visible = true;
             }
