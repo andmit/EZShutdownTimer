@@ -23,6 +23,7 @@ namespace EZShutdownTimer
 
         }
 
+        //controls the input feild and changes secs label
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
             decimal seconds = (numericUpDown1.Value * 60) * 60;
@@ -30,25 +31,23 @@ namespace EZShutdownTimer
 
         }
 
+        //Shutdown Button
         private void button1_Click(object sender, EventArgs e)
         {
 
             shutdown(true);
         }
 
+        //Allows one easy method for calling a shutdown(true) or an abort(false).
         private void shutdown(bool state)
         {
+
             if (state)
             {
-                //var pwr = new ProcessStartInfo("shutdown", "/s /t " + secsGet());
-                //System.Diagnostics.Process.Start("ShutDown", "/t " + secsGet());
-                //Process.Start(Environment.ExpandEnvironmentVariables("cmd.exe"), "shutdown /s /t "  + secsGet().ToString());
-                //ProcessStartInfo startInfo = new ProcessStartInfo("shutdown.exe", "/s /t " + secsGet());
-                //startInfo.Verb = "runas";
-                //System.Diagnostics.Process.Start(startInfo);
-
+                
                 System.Diagnostics.Process.Start("shutdown","-s -t " + secsGet());
-
+                
+                //Hide shutdown and show abort button
                 button1.Visible = false;
                 button2.Visible = true;
             }
@@ -56,20 +55,20 @@ namespace EZShutdownTimer
                 //var pwr = new ProcessStartInfo("shutdown", "/a");
                 System.Diagnostics.Process.Start("shutdown", "/a");
 
-//                pwr.CreateNoWindow = true;
-  //              pwr.UseShellExecute = false;
-    //            Process.Start(pwr);
+                //hide abort button
                 button1.Visible = true;
                 button2.Visible = false;
                 
             }
         }
 
+        //converts counter value to int and returns the hours in seconds
         private int secsGet()
         {
             return 1 + (int)(numericUpDown1.Value * 60 * 60);
         }
 
+        //Abort button
         private void button2_Click(object sender, EventArgs e)
         {
             shutdown(false);
