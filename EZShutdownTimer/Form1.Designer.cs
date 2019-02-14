@@ -1,6 +1,6 @@
 ﻿namespace EZShutdownTimer
 {
-    partial class Form1
+    partial class EZShutdownTimer
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EZShutdownTimer));
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.secs = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -81,17 +82,17 @@
             this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Form1
+            // EZShutdownTimer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(268, 69);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.secs);
             this.Controls.Add(this.numericUpDown1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "EZShutdownTimer";
+            this.Text = "EZShutdownTimer";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

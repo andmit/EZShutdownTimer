@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace EZShutdownTimer
 {
-    public partial class Form1 : Form
+    public partial class EZShutdownTimer : Form
     {
-        public Form1()
+        public EZShutdownTimer()
         {
             InitializeComponent();
         }
@@ -43,10 +43,11 @@ namespace EZShutdownTimer
                 //var pwr = new ProcessStartInfo("shutdown", "/s /t " + secsGet());
                 //System.Diagnostics.Process.Start("ShutDown", "/t " + secsGet());
                 //Process.Start(Environment.ExpandEnvironmentVariables("cmd.exe"), "shutdown /s /t "  + secsGet().ToString());
-                ProcessStartInfo startInfo = new ProcessStartInfo("shutdown.exe", "/s /t " + secsGet());
-                startInfo.Verb = "runas";
-                System.Diagnostics.Process.Start(startInfo);
+                //ProcessStartInfo startInfo = new ProcessStartInfo("shutdown.exe", "/s /t " + secsGet());
+                //startInfo.Verb = "runas";
+                //System.Diagnostics.Process.Start(startInfo);
 
+                System.Diagnostics.Process.Start("shutdown","-s -t " + secsGet());
 
                 button1.Visible = false;
                 button2.Visible = true;
@@ -64,9 +65,9 @@ namespace EZShutdownTimer
             }
         }
 
-        private decimal secsGet()
+        private int secsGet()
         {
-            return 1 + numericUpDown1.Value * 60 * 60;
+            return 1 + (int)(numericUpDown1.Value * 60 * 60);
         }
 
         private void button2_Click(object sender, EventArgs e)
