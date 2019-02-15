@@ -8,4 +8,4 @@ A Simple app to shutdown a pc on a timer. I got tired of doing shutdown -s -t an
 This app requires .NET
 I could have made it without but I wanted the easiness of windows forms.
 
-this software is "as is" 
+this software is "as is" under MIT License
